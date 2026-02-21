@@ -49,7 +49,9 @@ function changeTrack(genre) {
     const label = document.querySelector('.record-label');
     const player = document.getElementById('spotify-player');
     const yearText = document.querySelector('.year');
-    
+
+    const playerContainer = document.getElementById('spotify-container');
+
     if (!data[genre]) return;
 
     title.innerText = data[genre].title;
@@ -58,19 +60,16 @@ function changeTrack(genre) {
     label.style.backgroundSize = "cover";
     if (yearText) yearText.style.opacity = "0";
 
+    // Reveal Spotify
     if (playerContainer) {
         playerContainer.style.display = "block"; 
         playerContainer.style.opacity = "1";
     }
-    
+
     // Spotify Embed URL 
     if (player) {
     player.src = `https://open.spotify.com/embed/track/${data[genre].spotifyID}?utm_source=generator&theme=0`;
     }
-    
+
     vinyl.classList.add('playing');
-
 }
-
-
-
